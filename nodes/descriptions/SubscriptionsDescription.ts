@@ -70,8 +70,8 @@ export const subscriptionFields: INodeProperties[] = [
 				resource: ['subscriptions'],
 			},
 		},
-		default: 'false',
-		description: 'Reactivate en existing subscription',
+		default: false,
+		description: 'Whether to reactivate an existing subscription',
 	},
     {
 		displayName: 'Send Welcome Email',
@@ -83,8 +83,8 @@ export const subscriptionFields: INodeProperties[] = [
 				resource: ['subscriptions'],
 			},
 		},
-		default: 'false',
-		description: 'Whether or not to reactivate the subscription if they have already unsubscribed.',
+		default: false,
+		description: 'Whether or not to reactivate the subscription if they have already unsubscribed',
 	},
     {
 		displayName: 'UTM Source',
@@ -97,8 +97,7 @@ export const subscriptionFields: INodeProperties[] = [
 			},
 		},
 		default: '',
-		description: 'The source of the subscription.',
-        required: false,
+		description: 'The source of the subscription',
 	},
     {
 		displayName: 'UTM Medium',
@@ -112,7 +111,6 @@ export const subscriptionFields: INodeProperties[] = [
 		},
 		default: '',
 		description: 'The medium of the subscription',
-        required: false,
 	},
     {
 		displayName: 'UTM Campaign',
@@ -126,7 +124,6 @@ export const subscriptionFields: INodeProperties[] = [
 		},
 		default: '',
 		description: 'The acquisition campaign of the subscription',
-        required: false,
 	},
     {
 		displayName: 'Referring Site',
@@ -140,7 +137,6 @@ export const subscriptionFields: INodeProperties[] = [
 		},
 		default: '',
 		description: 'The website that the subscriber was referred from',
-        required: false,
 	},
     {
 		displayName: 'Referral Code',
@@ -154,7 +150,6 @@ export const subscriptionFields: INodeProperties[] = [
 		},
 		default: '',
 		description: 'This should be a subscribers referral_code. This gives referral credit for the new subscription.',
-        required: false,
 	},
     {
 		displayName: 'Tier',
@@ -168,7 +163,6 @@ export const subscriptionFields: INodeProperties[] = [
 		},
 		default: '',
 		description: 'The tier for the subscription',
-        required: false,
 	},
     {
 		displayName: 'Stripe Customer ID',
@@ -182,7 +176,6 @@ export const subscriptionFields: INodeProperties[] = [
 		},
 		default: '',
 		description: 'The Stripe ID for the subscription',
-        required: false,
 	},
     {
 		displayName: 'Stripe Customer ID',
@@ -196,6 +189,5 @@ export const subscriptionFields: INodeProperties[] = [
 		},
 		default: '',
 		description: 'The Stripe ID for the subscription',
-        required: false,
 	},
 ];

@@ -1,3 +1,4 @@
+/* eslint-disable n8n-nodes-base/node-dirname-against-convention */
 import type {
 	IHookFunctions,
 	IWebhookFunctions,
@@ -92,7 +93,7 @@ export class BeehiivTrigger implements INodeType {
 			// select them easily
 			async getPublications(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
 				const returnData: INodePropertyOptions[] = [];
-				const publications = await beehiivApiRequest.call(this, 'GET', '/publications');
+				const publications = await beehiivApiRequest.call(this, 'GET', returnData, '/publications',);
 				for (const publication of publications) {
 					const publicationName = publication.name;
 					const publicationId = publication.uid;
@@ -112,8 +113,8 @@ export class BeehiivTrigger implements INodeType {
 				const webhookUrl = this.getNodeWebhookUrl('default');
 				const webhookData = this.getWorkflowStaticData('node');
 				const actionName = this.getNodeParameter('actionName');
-                const returnData: INodePropertyOptions[] = [];
-				const publications = await beehiivApiRequest.call(this, 'GET', '/publications');
+        const returnData: INodePropertyOptions[] = [];
+				const publications = await beehiivApiRequest.call(this, 'GET', webhookData, '/publications',);
 				for (const publication of publications) {
 					const publicationName = publication.name;
 					const publicationId = publication.uid;
@@ -125,7 +126,7 @@ export class BeehiivTrigger implements INodeType {
 				// Check all the webhooks which exist already if it is identical to the
 				// one that is supposed to get created.
 				const endpoint = `/publications/${publications.value}/webhooks`;
-				const webhooks = await  beehiivApiRequest.call(this, 'GET', endpoint, {});
+				const webhooks = await  beehiivApiRequest.call(this, 'GET', {}, endpoint,);
 
 				for (const webhook of webhooks) {
 					if (webhook.url === webhookUrl && webhook.actionName === actionName) {
@@ -140,8 +141,8 @@ export class BeehiivTrigger implements INodeType {
 				const webhookData = this.getWorkflowStaticData('node');
 				const webhookUrl = this.getNodeWebhookUrl('default');
 				const actionName = this.getNodeParameter('actionName');
-                const publications = await beehiivApiRequest.call(this, 'GET', '/publications');
-                const returnData: INodePropertyOptions[] = [];
+        const publications = await beehiivApiRequest.call(this, 'GET', webhookData, '/publications',);
+        const returnData: INodePropertyOptions[] = [];
 				for (const publication of publications) {
 					const publicationName = publication.name;
 					const publicationId = publication.uid;
@@ -151,14 +152,14 @@ export class BeehiivTrigger implements INodeType {
 					});
 				}
 
-				const endpoint = `/publications/${publications.value}/webhooks`;
+				const endpoint = `/webhooks`;
 
 				const body = {
 					actionName,
 					url: webhookUrl,
 				};
 
-				const responseData = await  beehiivApiRequest.call(this, 'POST', endpoint, body);
+				const responseData = await  beehiivApiRequest.call(this, 'POST', body, endpoint);
 
 				if (responseData.id === undefined) {
 					// Required data is missing so was not successful
@@ -169,9 +170,9 @@ export class BeehiivTrigger implements INodeType {
 				return true;
 			},
 			async delete(this: IHookFunctions): Promise<boolean> {
-                const publications = await beehiivApiRequest.call(this, 'GET', '/publications');
 				const webhookData = this.getWorkflowStaticData('node');
-                const returnData: INodePropertyOptions[] = [];
+				const publications = await beehiivApiRequest.call(this, 'GET', webhookData, '/publications');
+        const returnData: INodePropertyOptions[] = [];
 				for (const publication of publications) {
 					const publicationName = publication.name;
 					const publicationId = publication.uid;
@@ -181,9 +182,9 @@ export class BeehiivTrigger implements INodeType {
 					});
 				}
 				if (webhookData.webhookId !== undefined) {
-                    const endpoint = `/publications/${publications.value}/webhooks/${webhookData.webhookId}`;
+          const endpoint = `/webhooks/${webhookData.webhookId}`;
 					try {
-						await   beehiivApiRequest.call(this, 'DELETE', endpoint);
+						await beehiivApiRequest.call(this, 'DELETE', webhookData, endpoint,);
 					} catch (error) {
 						return false;
 					}

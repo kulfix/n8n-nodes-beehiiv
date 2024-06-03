@@ -28,9 +28,12 @@ export const referralFields: INodeProperties[] = [
 	/*                                tag:create/update                       */
 	/* -------------------------------------------------------------------------- */
 	{
-		displayName: 'limit',
+		displayName: 'Limit',
 		name: 'limit',
 		type: 'number',
+		typeOptions: {
+			minValue: 1,
+		},
 		placeholder: '10',
 		displayOptions: {
 			show: {
@@ -38,12 +41,11 @@ export const referralFields: INodeProperties[] = [
 				resource: ['referral_program'],
 			},
 		},
-		default: '',
-		description: 'A limit on the number of objects to be returned',
-		required: false,
+		default: 50,
+		description: 'Max number of results to return',
 	},
     {
-		displayName: 'page',
+		displayName: 'Page',
 		name: 'page',
 		type: 'number',
 		placeholder: '1',
@@ -55,6 +57,5 @@ export const referralFields: INodeProperties[] = [
 		},
 		default: '',
 		description: 'Pagination returns the results in pages',
-		required: false,
 	},
 ];

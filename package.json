@@ -1,19 +1,19 @@
 {
-  "name": "n8n-nodes-<...>",
-  "version": "0.1.0",
-  "description": "",
+  "name": "n8n-nodes-beehiiv",
+  "version": "0.1.1",
+  "description": "A n8n community node for automating your Beehiiv workflows",
   "keywords": [
     "n8n-community-node-package"
   ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://www.getoasis.io",
   "author": {
-    "name": "",
-    "email": ""
+    "name": "James Bohrman",
+    "email": "james@getoasis.io"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/<...>/n8n-nodes-<...>.git"
+    "url": "https://github.com/jdbohrman/n8n-nodes-beehiiv.git"
   },
   "main": "index.js",
   "scripts": {
@@ -30,12 +30,11 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/ExampleCredentialsApi.credentials.js",
-      "dist/credentials/HttpBinApi.credentials.js"
+      "dist/credentials/BeehiivApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/ExampleNode/ExampleNode.node.js",
-      "dist/nodes/HttpBin/HttpBin.node.js"
+      "dist/nodes/Beehiiv/Beehiiv.node.js",
+      "dist/nodes/Beehiiv/BeehiivTrigger.node.js"
     ]
   },
   "devDependencies": {
@@ -43,6 +42,7 @@
     "eslint-plugin-n8n-nodes-base": "^1.11.0",
     "gulp": "^4.0.2",
     "n8n-workflow": "*",
+    "@types/lodash": "^4.14.195",
     "prettier": "^2.7.1",
     "typescript": "~4.8.4"
   },
@@ -50,6 +50,8 @@
     "n8n-workflow": "*"
   },
   "dependencies": {
-    "change-case": "^5.4.4"
+    "change-case": "^5.4.4",
+    "get": "^1.4.0",
+    "lodash": "4.17.21"
   }
 }

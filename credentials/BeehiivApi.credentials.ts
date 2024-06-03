@@ -6,11 +6,11 @@ import type {
 } from 'n8n-workflow';
 
 export class BeehiivApi implements ICredentialType {
-	name = 'BeehiivApi';
+	name = 'beehiivApi';
 
 	displayName = 'Beehiiv API';
 
-	documentationUrl = 'Beehiiv';
+	documentationUrl = 'https://github.com/jdbohrman/n8n-nodes-beehiiv/';
 
 	properties: INodeProperties[] = [
 		{
