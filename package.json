@@ -33,8 +33,8 @@
       "dist/credentials/BeehiivApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/Beehiiv/Beehiiv.node.js",
-      "dist/nodes/Beehiiv/BeehiivTrigger.node.js"
+      "dist/nodes/Beehiiv.node.js",
+      "dist/nodes/BeehiivTrigger.node.js"
     ]
   },
   "devDependencies": {
