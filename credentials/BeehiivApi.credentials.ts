@@ -32,7 +32,7 @@ export class BeehiivApi implements ICredentialType {
 		type: 'generic',
 		properties: {
 			headers: {
-				Authorization: '=bearer {{$credentials.accessToken}}',
+				Authorization: '=Bearer {{$credentials.accessToken}}',
 			},
 		},
 	};
@@ -41,6 +41,7 @@ export class BeehiivApi implements ICredentialType {
 		request: {
 			baseURL: 'https://api.beehiiv.com/v2',
 			url: `/publications`,
+			method: 'GET',
 		},
 	};
 }

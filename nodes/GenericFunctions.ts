@@ -27,7 +27,17 @@ export async function beehiivApiRequest(
 		url: `https://api.beehiiv.com/v2/publications/${publicationId}/${resource}`,
 		json: true,
 	};
-	return await this.helpers.requestWithAuthentication.call(this, 'beehiivApi', options);
+
+	try {
+		console.log("OPTIONS",options);
+		const response = await this.helpers.requestWithAuthentication.call(this, 'beehiivApi', options);
+		console.log("RESPONSE",response);
+		return response;
+	} catch (error) {
+		console.log("ERROR", error);
+	}
+
+
 }
 
 export function eventExists(currentEvents: string[], webhookEvents: IDataObject) {

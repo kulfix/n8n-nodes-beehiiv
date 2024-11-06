@@ -6,9 +6,9 @@ import type {
 	INodeTypeDescription,
 	IWebhookResponseData,
     ILoadOptionsFunctions,
-    INodePropertyOptions
+    INodePropertyOptions,
 } from 'n8n-workflow';
-
+import { NodeConnectionType } from 'n8n-workflow';
 import { beehiivApiRequest, } from './GenericFunctions';
 
 export class BeehiivTrigger implements INodeType {
@@ -24,8 +24,10 @@ export class BeehiivTrigger implements INodeType {
 			name: 'Beehiiv Trigger',
 		},
         inputs: [],
-		outputs: ['main'],
-        credentials: [
+		outputs: [{
+			type: NodeConnectionType.Main,
+		}],
+		credentials: [
 			{
 				name: 'beehiivApi',
 				required: true,
